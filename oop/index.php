@@ -1,4 +1,5 @@
 <?php
+
 //Начинаем ООП
 class Toad
 {
@@ -47,10 +48,10 @@ class Toad
 $rush = new Toad('Rush', 'green');
 $pimple = new Toad('Pimple', 'yellow');
 
-$rush ->sayName();
-$rush ->showHealth();
-$rush ->run();
-$rush ->showHealth();
+$rush->sayName();
+$rush->showHealth();
+$rush->run();
+$rush->showHealth();
 $rush->name = 'NoRush';
 $rush->sayName();
 
@@ -60,21 +61,45 @@ class Mosquito
     public $hitPower;
     public $lehgthTrunk;
 
-    public function __construct($health = 100, $hitPower =1)
+    public function __construct()
     {
-        $this->health = $health;
-        $this->hitPower= $hitPower;
-        $this ->lehgthTrunk = rand(1,10);
+        $this->health = 100;
+        $this->hitPower = 1;
+        $this->lehgthTrunk = rand(1, 10);
     }
 
-
+    public function lehgth_Trunk()
+    {
+         echo 'Если длина хоботка' . ' = ' . $this->lehgthTrunk;
+        $this->br();
+    }
     public function PowerTrunk()
     {
-       echo $this -> health + (10 * ($this->lehgthTrunk / 5));
+
+        echo 'Здоровье' . ' = ';
+        echo $this->PowerHealth() ;
     }
 
+    public function PowerHealth()
+    {
+        if($this->lehgthTrunk >= 5){
+            echo $this->health + ($this->lehgthTrunk - ($this->lehgthTrunk % 5))/5*10;
+        } else {
+            echo $this->health;
+        }
+    }
+
+    private function br()
+    {
+        echo '<br>';
+    }
+
+
 }
+
 $mosquito = new Mosquito();
-$mosquito ->PowerTrunk();
+
+$mosquito->lehgth_Trunk();
+$mosquito->PowerTrunk();
 
 
