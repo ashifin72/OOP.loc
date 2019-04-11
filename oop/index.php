@@ -1,5 +1,5 @@
 <?php
-
+//Начинаем ООП
 class Toad
 {
     public $name;
